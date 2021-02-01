@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Line2D_draw_contour_sep.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Line2D_Gaussian_Contour.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Spatial_axes_ends.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Line2D_Arrows.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/MeshInstance_GaussianSurface.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Line2D_axes.gd" type="Script" id=6]
+[ext_resource path="res://Shading/material_Gaussian.tres" type="Material" id=7]
+[ext_resource path="res://Scripts/Line2D_drawAnimation.gd" type="Script" id=8]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Spatial_axes_ends" type="Spatial" parent="."]
+script = ExtResource( 3 )
+
+[node name="ImmediateGeometry_draw_3dlines" type="ImmediateGeometry" parent="Spatial_axes_ends"]
+
+[node name="Label_x" type="Label" parent="Spatial_axes_ends"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_z " type="Label" parent="Spatial_axes_ends"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_-x" type="Label" parent="Spatial_axes_ends"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_-z" type="Label" parent="Spatial_axes_ends"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_P(x,z)" type="Label" parent="Spatial_axes_ends"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImmediateGeometry_scales" type="ImmediateGeometry" parent="Spatial_axes_ends"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Spatial_axes_ends"]
+
+[node name="Line2D_Arrows" type="Line2D" parent="Spatial_axes_ends/CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="Line2D_Gaussian_Contour" type="Line2D" parent="Spatial_axes_ends/CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Line2D_draw_contour_sep" type="Line2D" parent="Spatial_axes_ends/CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance_GaussianSurface" type="MeshInstance" parent="Spatial_axes_ends/CanvasLayer"]
+mesh = SubResource( 1 )
+material/0 = ExtResource( 7 )
+script = ExtResource( 5 )
+
+[node name="Line2D_axes" type="Line2D" parent="Spatial_axes_ends/CanvasLayer"]
+script = ExtResource( 6 )
+
+[node name="CanvasLayer_start_instruction" type="CanvasLayer" parent="Spatial_axes_ends"]
+
+[node name="Line2D_drawAnimation" type="Line2D" parent="Spatial_axes_ends/CanvasLayer_start_instruction"]
+script = ExtResource( 8 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.665907, 0.025736, -0.745591, 0.220368, 0.948024, 0.22954, 0.712745, -0.317157, 0.625625, 0, 6.16471, 0 )
+light_color = Color( 0.964706, 0.94902, 0.933333, 1 )
+shadow_enabled = true
+shadow_color = Color( 0.0509804, 0.0509804, 0.0470588, 1 )
+directional_shadow_max_distance = 200.0

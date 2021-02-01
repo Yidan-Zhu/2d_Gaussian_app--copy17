@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Shading/shading_Gaussian.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/variance_x = 1.0
+shader_param/variance_z = 1.0
+shader_param/mean_x = 0.5
+shader_param/mean_z = 0.5
+shader_param/correlation = 0.0
+shader_param/Gaussian_scale_up = 40.0

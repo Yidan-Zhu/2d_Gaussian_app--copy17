@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/Camera.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Node2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Side_Panel.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Environment" id=1]
+
+[sub_resource type="World" id=2]
+environment = SubResource( 1 )
+
+[sub_resource type="Environment" id=3]
+
+[sub_resource type="Environment" id=4]
+background_mode = 1
+background_color = Color( 0.545098, 0.384314, 0.415686, 1 )
+
+[sub_resource type="World" id=5]
+environment = SubResource( 4 )
+
+[node name="Spatial_SplitScreen" type="Spatial"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 6.10352e-05
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer_camera" type="ViewportContainer" parent="HBoxContainer"]
+margin_right = 766.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+stretch = true
+
+[node name="Viewport_camera" type="Viewport" parent="HBoxContainer/ViewportContainer_camera"]
+size = Vector2( 766, 600 )
+world = SubResource( 2 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera" type="Camera" parent="HBoxContainer/ViewportContainer_camera/Viewport_camera"]
+transform = Transform( -1.62921e-07, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 8.14605e-08, -1.41094e-07, 0, 0.831, 7 )
+environment = SubResource( 3 )
+script = ExtResource( 1 )
+
+[node name="Node2D" parent="HBoxContainer/ViewportContainer_camera/Viewport_camera" instance=ExtResource( 2 )]
+
+[node name="ViewportContainer_panel" type="ViewportContainer" parent="HBoxContainer"]
+margin_left = 770.0
+margin_right = 1000.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+stretch = true
+
+[node name="Viewport_panel" type="Viewport" parent="HBoxContainer/ViewportContainer_panel"]
+size = Vector2( 230, 600 )
+world = SubResource( 5 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera" type="Camera" parent="HBoxContainer/ViewportContainer_panel/Viewport_panel"]
+
+[node name="Side_Panel" parent="HBoxContainer/ViewportContainer_panel/Viewport_panel" instance=ExtResource( 3 )]

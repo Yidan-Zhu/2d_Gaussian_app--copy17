@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/Line2D_panel.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/joystick_background.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/TouchScreenButton_ab.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/joystick_pressed.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/joystick_normal.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/TouchScreenButton_deviations.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/UIs_holder.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+
+[node name="Side_Panel" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Line2D_panel" type="Line2D" parent="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="UIs_holder" type="Node2D" parent="CanvasLayer"]
+script = ExtResource( 7 )
+
+[node name="VSlider_theta" type="VSlider" parent="CanvasLayer/UIs_holder"]
+margin_right = 16.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_minusPi" type="Label" parent="CanvasLayer/UIs_holder/VSlider_theta"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Label_plusPi" type="Label" parent="CanvasLayer/UIs_holder/VSlider_theta"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Label_theta" type="Label" parent="CanvasLayer/UIs_holder/VSlider_theta"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="VSlider_rho" type="VSlider" parent="CanvasLayer/UIs_holder"]
+margin_right = 16.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_minusOne" type="Label" parent="CanvasLayer/UIs_holder/VSlider_rho"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Label_plusOne" type="Label" parent="CanvasLayer/UIs_holder/VSlider_rho"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Label_rho" type="Label" parent="CanvasLayer/UIs_holder/VSlider_rho"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="joystick_ab" type="Node2D" parent="CanvasLayer/UIs_holder"]
+scale = Vector2( 0.4, 0.4 )
+
+[node name="joystick_background" type="Sprite" parent="CanvasLayer/UIs_holder/joystick_ab"]
+texture = ExtResource( 2 )
+
+[node name="TouchScreenButton_ab" type="TouchScreenButton" parent="CanvasLayer/UIs_holder/joystick_ab/joystick_background"]
+normal = ExtResource( 5 )
+pressed = ExtResource( 4 )
+script = ExtResource( 3 )
+
+[node name="Label_a" type="Label" parent="CanvasLayer/UIs_holder/joystick_ab/joystick_background"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_b" type="Label" parent="CanvasLayer/UIs_holder/joystick_ab/joystick_background"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="joystick_deviations" type="Node2D" parent="CanvasLayer/UIs_holder"]
+scale = Vector2( 0.4, 0.4 )
+
+[node name="joystick_background2" type="Sprite" parent="CanvasLayer/UIs_holder/joystick_deviations"]
+texture = ExtResource( 2 )
+
+[node name="TouchScreenButton_deviations" type="TouchScreenButton" parent="CanvasLayer/UIs_holder/joystick_deviations/joystick_background2"]
+normal = ExtResource( 5 )
+pressed = ExtResource( 4 )
+script = ExtResource( 6 )
+
+[node name="Label_dev_x" type="Label" parent="CanvasLayer/UIs_holder/joystick_deviations/joystick_background2"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_dev_z" type="Label" parent="CanvasLayer/UIs_holder/joystick_deviations/joystick_background2"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
